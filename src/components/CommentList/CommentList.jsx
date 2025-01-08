@@ -1,1 +1,3 @@
-export const CommentList = () => <>Put the list here</>;
+export const CommentList = () => (
+  <b data-cy="NoCommentsMessage">No comments yet</b>
+);
