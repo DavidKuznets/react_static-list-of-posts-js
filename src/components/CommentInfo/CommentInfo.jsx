@@ -1,10 +1,14 @@
-export const CommentInfo = ({ comment }) => {
-  return <p className="PostInfo__body">{comment.body}</p>;
-};
+export const CommentInfo = ({ comment }) => (
+  <div className="CommentInfo">
+    <div className="CommentInfo__title">
+      <strong className="CommentInfo__name">{comment.name}</strong>
 
-// <article
-//   className={`TodoInfo ${todo.completed ? 'TodoInfo--completed' : ''}`}
-// >
-//   <h2 className="TodoInfo__title">{todo.title}</h2>
-//   {todo.user && <UserInfo user={todo.user} />}
-// </article>
+      {' by '}
+
+      <a className="CommentInfo__email" href={`mailto:${comment.email}`}>
+        {comment.email}
+      </a>
+    </div>
+    <p className="CommentInfo__body">{comment.body}</p>
+  </div>
+);

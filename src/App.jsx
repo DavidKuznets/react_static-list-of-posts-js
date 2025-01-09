@@ -7,20 +7,14 @@ import usersFromServer from './api/users.json';
 import { PostList } from './components/PostList/PostList';
 
 function fullArray() {
-  const getPostServer = postsFromServer.map(post => {
-    const userAndPost = usersFromServer.find(user => user.Id === post.userId);
-    const commentAndPost = commentsFromServer.filter(
+  return postsFromServer.map(post => {
+    const foundUser = usersFromServer.find(user => user.id === post.userId);
+    const comments = commentsFromServer.filter(
       comment => comment.postId === post.id,
     );
 
-    return {
-      ...post,
-      user: userAndPost,
-      comment: commentAndPost,
-    };
+    return { ...post, foundUser, comments };
   });
-
-  return getPostServer;
 }
 
 const posts = fullArray();
