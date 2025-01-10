@@ -8,12 +8,14 @@ import { PostList } from './components/PostList/PostList';
 
 function fullArray() {
   return postsFromServer.map(post => {
-    const foundUser = usersFromServer.find(user => user.id === post.userId);
+    const user = usersFromServer.find(
+      currentUser => currentUser.id === post.userId,
+    );
     const comments = commentsFromServer.filter(
       comment => comment.postId === post.id,
     );
 
-    return { ...post, foundUser, comments };
+    return { ...post, user, comments };
   });
 }
 
